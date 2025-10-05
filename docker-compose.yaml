@@ -1,0 +1,22 @@
+services:
+  megasync:
+    image: debian:stable-slim
+    container_name: megasync
+    volumes:
+      - ../megacmd-Debian_13_amd64.deb:/tmp/megacmd.deb:ro
+      - ./scripts:/scripts:ro
+      - /etc/machine-id:/etc/machine-id:ro
+      - ./mega.creds:/run/mega.creds:ro
+      - ./megaCmd:/root/.megaCmd
+      - ./data:/data
+
+    entrypoint: >
+      bash -c "
+        bash /scripts/mega-init.bash &&
+        bash /scripts/mega-login.bash &&
+        bash /scripts/mega-customscript.bash &&
+        mega-logout --keep-session &&
+        tail -f /dev/null
+      "
+    tty: true
+    init: true
