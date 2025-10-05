@@ -16,7 +16,6 @@ services:
         bash /scripts/mega-init.bash &&
         bash /scripts/mega-login.bash &&
         bash /scripts/mega-customscript.bash &&
-        mega-logout --keep-session &&
         tail -f /dev/null
       "
     tty: true
