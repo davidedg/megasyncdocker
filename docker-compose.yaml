@@ -3,7 +3,7 @@ services:
     image: debian:stable-slim
     container_name: megasync
     volumes:
-      - ../megacmd-Debian_13_amd64.deb:/tmp/megacmd.deb:ro
+      - ./megacmd-Debian_13_amd64.deb:/tmp/megacmd.deb:ro
       - ./scripts:/scripts:ro
       - /etc/machine-id:/etc/machine-id:ro
       - ./mega.creds:/run/mega.creds:ro
